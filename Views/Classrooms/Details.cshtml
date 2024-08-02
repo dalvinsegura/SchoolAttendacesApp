@@ -1,0 +1,48 @@
+﻿@model SchoolAttendacesApp.Models.Classroom
+
+@{
+    ViewData["Title"] = "Detalles del Aula";
+}
+
+<h1>Detalles del Aula</h1>
+
+<div>
+    <h4>Aula</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nombre
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+
+<h4>Estudiantes</h4>
+@if (Model.Students != null && Model.Students.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model.Students)
+            {
+                <tr>
+                    <td>@student.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay estudiantes registrados en esta aula.</p>
+}
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>

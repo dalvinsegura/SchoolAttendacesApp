@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SchoolAttendacesApp.Models.Classroom>
+
+@{
+    ViewData["Title"] = "Aulas";
+}
+
+<h1>Aulas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nueva Aula</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalles</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
