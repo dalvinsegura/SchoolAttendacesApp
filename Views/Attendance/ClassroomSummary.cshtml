@@ -1,0 +1,42 @@
+﻿@model SchoolAttendacesApp.ViewModels.ClassroomSummaryViewModel
+
+<h2>Resumen de Asistencia - @Model.ClassroomName</h2>
+<a href="/Attendance/ExportToCsv" class="btn btn-success">Download Attendance Resume as CSV</a>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            @foreach (var student in Model.Students)
+            {
+                <th>@student.Name</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var date in Model.Attendances.Select(a => a.Date).Distinct().OrderByDescending(d => d))
+        {
+            <tr>
+                <td>@date.ToShortDateString()</td>
+                @foreach (var student in Model.Students)
+                {
+                    var attendance = Model.Attendances.FirstOrDefault(a => a.StudentId == student.Id && a.Date == date);
+                    <td>
+                        @if (attendance != null)
+                        {
+                            @(attendance.IsPresent ? "P" : "A")
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Classrooms" asp-action="Details" asp-route-id="@Model.ClassroomId" class="btn btn-secondary">Volver a los detalles del aula</a>

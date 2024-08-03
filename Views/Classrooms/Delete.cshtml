@@ -1,0 +1,27 @@
+﻿@model SchoolAttendacesApp.Models.Classroom
+
+@{
+    ViewData["Title"] = "Eliminar Aula";
+}
+
+<h1>Eliminar Aula</h1>
+
+<h3>¿Estás seguro de que quieres eliminar esta aula?</h3>
+<div>
+    <h4>Aula</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nombre
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver a la lista</a>
+    </form>
+</div>

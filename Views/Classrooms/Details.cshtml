@@ -19,13 +19,25 @@
     </dl>
 </div>
 
+<p>
+    <a asp-controller="Attendance" asp-action="TakeAttendance" asp-route-classroomId="@Model.Id" class="btn btn-primary">Pasar Lista</a>
+    <a asp-controller="Attendance" asp-action="ClassroomSummary" asp-route-classroomId="@Model.Id" class="btn btn-info">Ver Resumen de Asistencia</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar Aula</a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Eliminar Aula</a>
+</p>
+
 <h4>Estudiantes</h4>
+<p>
+    <a asp-controller="Students" asp-action="Create" asp-route-classroomId="@Model.Id" class="btn btn-secondary">Agregar Estudiante</a>
+</p>
+
 @if (Model.Students != null && Model.Students.Any())
 {
     <table class="table">
         <thead>
             <tr>
                 <th>Nombre</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +45,10 @@
             {
                 <tr>
                     <td>@student.Name</td>
+                    <td>
+                        <a asp-controller="Students" asp-action="Edit" asp-route-id="@student.Id" class="btn btn-sm btn-primary">Editar</a>
+                        <a asp-controller="Students" asp-action="Delete" asp-route-id="@student.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
                 </tr>
             }
         </tbody>
@@ -44,5 +60,5 @@ else
 }
 
 <div>
-    <a asp-action="Index">Volver a la lista</a>
+    <a asp-action="Index">Volver a la lista de aulas</a>
 </div>
