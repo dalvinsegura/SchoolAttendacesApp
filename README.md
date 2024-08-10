@@ -68,6 +68,12 @@ The app aims to achieve a basic functional goal by enabling the registration of 
 - View and Download Summaries:
 
     - Go to the 'Attendance Summary' section, select the classroom, and view or download the summary as a CSV file.
+ 
+## Collaborators
+- Brander Báez
+- Juan Sánchez
+- Dalvin Segura
+
 ## Screenshots
 ![image](https://github.com/user-attachments/assets/87b8b048-e5cc-4964-8f43-540bb0e0789f)
 ![image](https://github.com/user-attachments/assets/4c7418bb-9176-4ece-8a46-b003d9474678)
